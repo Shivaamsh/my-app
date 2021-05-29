@@ -2,12 +2,12 @@
 pipeline{
     agent any
     tools{
-        maven 'maven3'
+        maven 'maven'
     }
     stages{
         stage("Create Folder"){
             steps{
-                sh "mkdir -p ${env.JOB_NAME}"
+                sh "mkdir -p ${env.JenkinsFile}"
             }
         }
         stage("Maven Build"){
@@ -15,9 +15,9 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
-        stage("Deploy to Tomcat Dev"){
+        stage("Deploy to SonarQube"){
             steps{
-                tomcatDeploy('tomcat-dev','ec2-user','172.31.40.104')
+                sonarqubeDeploy('shiva','35.188.70.52:9000')
             }
         }
     }
