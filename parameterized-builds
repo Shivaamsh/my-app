@@ -3,7 +3,7 @@ properties([parameters([choice(choices: 'master\nfeature-1\nfeature-2', descript
 node{
     stage('Scm Checkout'){
         echo "Pulling changes from the branch ${params.branch}"
-        git url: 'https://github.com/javahometech/my-app', branch: "${params.branch}"
+        git url: 'https://github.com/Shivaamsh/my-app', branch: "${params.branch}"
     }
     
 }
